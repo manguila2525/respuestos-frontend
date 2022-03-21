@@ -1,0 +1,12 @@
+:root {
+  --primary: rgb(81, 189, 252);
+  --success: rgb(126 252 220);
+  --info: rgb(65, 65, 65);
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: sans-serif;
+}
