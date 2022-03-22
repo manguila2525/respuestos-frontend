@@ -7,7 +7,12 @@ import { ShoppingCart } from '@mui/icons-material'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 
-function index() {
+interface listCarInfo {
+  listCar: []
+}
+
+const index = (props: listCarInfo) => {
+  const { listCar } = props
   const style = {
     position: 'absolute',
     top: '50%',
@@ -45,6 +50,18 @@ function index() {
             </Typography>
             <Button variant='outlined'>Comprar</Button>
           </Grid>
+          <Box>
+            <ul>
+              {listCar.map((nombre, i) => (
+                <li key={i}>
+                  <h1>{nombre.title}</h1>
+                  <h3>{nombre.price}</h3>
+                  <h3>{nombre.count}</h3>
+                  <Image>{nombre.img}</Image>
+                </li>
+              ))}
+            </ul>
+          </Box>
           <Grid sx={{ display: 'flex', justifyContent: 'center' }}>
             <Typography id='modal-modal-title2' variant='h5' component='h2'>
               Articulos que te gustan

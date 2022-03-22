@@ -1,5 +1,6 @@
 import frenos from '../../img/frenos.jpg'
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import {
   CardStyled,
   CardBtn,
@@ -8,9 +9,11 @@ import {
   LinkStyled,
   FooterStyled,
   ImgStyled,
+  BtnAdd,
 } from './styled'
 
 import { handleBtnLike } from './useCard'
+import { Button } from '@mui/material'
 
 interface propsCard {
   id: number
@@ -30,6 +33,9 @@ const CardLogin = (props: propsCard) => {
       <CardPrice>{price}$</CardPrice>
       <FooterStyled>
         <CardTitle>{nombre}</CardTitle>
+        <BtnAdd>
+          <AddShoppingCartIcon />
+        </BtnAdd>
       </FooterStyled>
     </LinkStyled>
   )

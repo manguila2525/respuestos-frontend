@@ -85,6 +85,9 @@ export const FooterStyled = styled.footer`
   z-index: 10;
   padding: 20px 15px;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-item: center;
 `
 export const ImgStyled = styled.img`
   width: 100%;
@@ -93,4 +96,14 @@ export const ImgStyled = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: center center;
+`
+export const BtnAdd = styled.button`
+  background: #4d494969;
+  padding: 15px 20px;
+  border-radius: 50px 50px 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: none;
+  color: #fff;
 `

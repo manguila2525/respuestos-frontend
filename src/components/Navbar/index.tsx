@@ -19,6 +19,15 @@ const Navbar = () => {
     setstate(false)
     // signOut()
   }
+
+  const listCar = [
+    {
+      title: 'Frenos',
+      price: '50$',
+      count: '1',
+      img: 'http://res.cloudinary.com/teamsito/image/upload/v1647914543/a6kuxfrmwxuzrxqba4tu.jpg',
+    },
+  ]
   useEffect(() => {
     setstate(localStorage.getItem('sesion'))
   }, [stateSesion])
@@ -49,7 +58,7 @@ const Navbar = () => {
           </h3>
         </li>
         <li>
-          <ShoppingCart />
+          <ShoppingCart listCar={listCar} />
         </li>
       </NavList>
     </NavStyled>
