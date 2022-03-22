@@ -8,7 +8,8 @@ const FormLogin = () => {
   const [spare, setSpare] = useState({
     title: '',
     description: '',
-    image: '',
+    price: 0,
+    count: 1,
   })
   const handleInput = (e: any) => {
     setSpare({
@@ -46,11 +47,22 @@ const FormLogin = () => {
                 value={spare.description}
               />
               <Input
+                type='number'
+                placeholder='Precio'
+                onChange={handleInput}
+                name='price'
+              />
+              <Input
+                type='number'
+                placeholder='Cantidad'
+                onChange={handleInput}
+                name='count'
+              />
+              <Input
                 type='file'
                 placeholder='Imagen'
                 onChange={handleInput}
                 name='image'
-                value={spare.image}
               />
             </FlexColumn>
             <SignUpBtn type='submit'>Create</SignUpBtn>
