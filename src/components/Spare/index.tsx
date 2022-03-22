@@ -9,19 +9,18 @@ import {
   ContentTools,
   BtnCountLeft,
   BtnCountRight,
-  Title,
-  TitleInfo,
+  // Title,
+  // TitleInfo,
   ContentImg,
 } from './styled'
 
-import CallIcon from '@mui/icons-material/Call'
-import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import EmailIcon from '@mui/icons-material/Email'
-import InstagramIcon from '@mui/icons-material/Instagram'
+// import CallIcon from '@mui/icons-material/Call'
+// import WhatsAppIcon from '@mui/icons-material/WhatsApp'
+// import EmailIcon from '@mui/icons-material/Email'
+// import InstagramIcon from '@mui/icons-material/Instagram'
 import StarIcon from '@mui/icons-material/Star'
 
-import { Container, TitleBig, Flex, FlexJustify } from '../../theme'
-import frenos from '../../img/frenos.jpg'
+import { Container, TitleBig, FlexJustify } from '../../theme'
 
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
