@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { NavStyled, NavBrand, NavList, Button, ButtonIcon } from './styled'
 import LogoutIcon from '@mui/icons-material/Logout'
 import FormLogin from '../FormLogin'
+import ShoppingCart from '../ShoppingCart'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -46,6 +47,9 @@ const Navbar = () => {
             )}
             <FormLogin />
           </h3>
+        </li>
+        <li>
+          <ShoppingCart />
         </li>
       </NavList>
     </NavStyled>

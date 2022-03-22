@@ -25,7 +25,6 @@ const Ecommerce = () => {
   }, [stateSesion])
   return (
     <MainEcommerce>
-      {user.nombre}
       <Search />
       <ContentCard>
         {spares.map(({ title, description, _id, imageUrl }) =>
