@@ -14,15 +14,15 @@ import { handleBtnLike } from './useCard'
 
 interface propsCard {
   id: number
-  nombre: string
-  descripcion: string
-  cantidad: number
+  title: string
+  description: string
+  count: number
   price: number
   imageUrl: string
 }
 
 const Card = (props: propsCard) => {
-  const { nombre, price, imageUrl } = props
+  const { title, price, imageUrl } = props
 
   const dispatchOpenModal = useDispatch()
   const openModal = () => {
@@ -30,10 +30,10 @@ const Card = (props: propsCard) => {
   }
   const card = (
     <LinkStyledLogin onClick={() => openModal()}>
-      <ImgStyled src={imageUrl} alt={nombre} />
+      <ImgStyled src={imageUrl} alt={title} />
       <CardPrice>{price}$</CardPrice>
       <FooterStyled>
-        <CardTitle>{nombre}</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </FooterStyled>
     </LinkStyledLogin>
   )

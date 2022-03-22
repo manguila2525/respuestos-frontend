@@ -27,25 +27,25 @@ const Ecommerce = () => {
     <MainEcommerce>
       <Search />
       <ContentCard>
-        {spares.map(({ title, description, _id, imageUrl }) =>
+        {spares.map(({ title, description, _id, imageUrl, price }) =>
           user.length === 0 ? (
             <Card
               id={_id}
               imageUrl={imageUrl}
-              nombre={title}
-              descripcion={description}
-              cantidad={10}
-              price={50}
+              title={title}
+              description={description}
+              count={10}
+              price={price}
               key={_id}
             />
           ) : (
             <CardLogin
               id={_id}
               imageUrl={imageUrl}
-              nombre={title}
-              descripcion={description}
-              cantidad={10}
-              price={50}
+              title={title}
+              description={description}
+              count={10}
+              price={price}
               key={_id}
             />
           )
