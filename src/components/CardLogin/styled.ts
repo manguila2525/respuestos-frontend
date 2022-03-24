@@ -65,6 +65,19 @@ export const LinkStyled = styled(Link)`
   cursor: pointer;
   text-decoration: none;
 `
+export const ContentStyle = styled.div`
+  flex-grow: 1;
+  min-width: 250px;
+  height: 250px;
+  outline: solid 1px rgb(243, 242, 242);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 3px 5px 5px 0 #f0f0f0;
+  cursor: pointer;
+  text-decoration: none;
+`
 export const LinkStyledLogin = styled.div`
   flex-grow: 1;
   min-width: 250px;
@@ -85,6 +98,9 @@ export const FooterStyled = styled.footer`
   z-index: 10;
   padding: 20px 15px;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-item: center;
 `
 export const ImgStyled = styled.img`
   width: 100%;
@@ -93,4 +109,14 @@ export const ImgStyled = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: center center;
+`
+export const BtnAdd = styled.button`
+  background: #4d494969;
+  padding: 15px 20px;
+  border-radius: 50px 50px 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: none;
+  color: #fff;
 `
