@@ -23,9 +23,9 @@ const Navbar = () => {
   const listCar = [
     {
       title: 'Frenos',
-      price: '50$',
+      price: 50,
       count: '1',
-      img: 'http://res.cloudinary.com/teamsito/image/upload/v1647914543/a6kuxfrmwxuzrxqba4tu.jpg',
+      img: 'https://espirituracer.com/archivos/2017/11/portada-frenos.jpg',
     },
   ]
   useEffect(() => {

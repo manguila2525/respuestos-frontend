@@ -7,6 +7,7 @@ import {
   CardPrice,
   CardTitle,
   LinkStyled,
+  ContentStyle,
   FooterStyled,
   ImgStyled,
   BtnAdd,
@@ -14,10 +15,11 @@ import {
 
 import { handleBtnLike } from './useCard'
 import { Button } from '@mui/material'
+import { useDispatch } from 'react-redux'
 
 interface propsCard {
   id: number
-  nombre: string
+  title: string
   descripcion: string
   cantidad: number
   price: number
@@ -25,19 +27,26 @@ interface propsCard {
 }
 
 const CardLogin = (props: propsCard) => {
-  const { id, nombre, price, imageUrl } = props
+  const { id, title, price, imageUrl } = props
+  const infoCard = { id, title, count: 1, price, img: imageUrl }
+  const dispatch = useDispatch()
+  const addCar = () => {
+    dispatch({ type: 'ADD', payload: infoCard })
+  }
 
   const card = (
-    <LinkStyled to={`/spare/${id}`}>
-      <ImgStyled src={imageUrl} alt={nombre} />
-      <CardPrice>{price}$</CardPrice>
+    <ContentStyle>
+      <LinkStyled to={`/spare/${id}`}>
+        <ImgStyled src={imageUrl} alt={title} />
+        <CardPrice>{price}$</CardPrice>
+      </LinkStyled>
       <FooterStyled>
-        <CardTitle>{nombre}</CardTitle>
-        <BtnAdd>
+        <CardTitle>{title}</CardTitle>
+        <BtnAdd onClick={addCar}>
           <AddShoppingCartIcon />
         </BtnAdd>
       </FooterStyled>
-    </LinkStyled>
+    </ContentStyle>
   )
 
   return (

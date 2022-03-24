@@ -65,6 +65,19 @@ export const LinkStyled = styled(Link)`
   cursor: pointer;
   text-decoration: none;
 `
+export const ContentStyle = styled.div`
+  flex-grow: 1;
+  min-width: 250px;
+  height: 250px;
+  outline: solid 1px rgb(243, 242, 242);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 3px 5px 5px 0 #f0f0f0;
+  cursor: pointer;
+  text-decoration: none;
+`
 export const LinkStyledLogin = styled.div`
   flex-grow: 1;
   min-width: 250px;
