@@ -19,31 +19,32 @@ import {
   DivStylePrice,
 } from './styled'
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart'
-import Autocomplete from '@mui/material/Autocomplete'
-import TextField from '@mui/material/TextField'
 import { useDispatch, useSelector } from 'react-redux'
-
-interface listCarInfo {
-  listCar: []
+import { sendWhatsapp, mapMessage } from '../../utils/handleWhatsapp.js'
+interface propsCard {
+  id: number
+  title: string
+  descripcion: string
+  cantidad: number
+  price: number
+  img: string
+  description: string
 }
-
-const index = (props: listCarInfo) => {
-  const { listCar } = props
+const index = () => {
   const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 1000,
+    width: '80%',
     height: 800,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
   }
 
-  const listCarShop = useSelector((state) => state.listCarShop)
-  const amount = [{ label: 1 }, { label: 2 }, { label: 3 }]
+  const listCarShop = useSelector((state: any) => state.listCarShop)
+
   const [unit, setUnit] = useState(1)
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
@@ -53,9 +54,13 @@ const index = (props: listCarInfo) => {
     dispatch({ type: 'DELETE', payload: id })
   }
 
+  const addUnit = (e: any) => {
+    setUnit(parseInt(e.target.value))
+  }
+
   return (
-    <div>
-      <ShoppingCart onClick={handleOpen}>Open modal</ShoppingCart>
+    <>
+      <ShoppingCart onClick={handleOpen}></ShoppingCart>
       <Modal
         open={open}
         onClose={handleClose}
@@ -71,47 +76,48 @@ const index = (props: listCarInfo) => {
             >
               Carrito de Compra
             </Typography>
-            <Button variant='outlined'>Comprar</Button>
+            <Button variant='outlined' onClick={() => mapMessage(listCarShop)}>
+              Comprar
+            </Button>
           </Grid>
           <Box>
             <ul>
-              {listCarShop.map((nombre, i) => (
-                <ListStyle key={i}>
-                  <DivImgStyle>
-                    <ImagenStyle src={nombre.img} />
-                  </DivImgStyle>
-                  <DivStyle>
-                    <TextCenter>{nombre.title}</TextCenter>
-                    <InfoStyle>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Natus, expedita tenetur dolor quidem assumenda laudantium
-                      amet in perspiciatis incidunt animi. Voluptatum, accusamus
-                      nostrum nulla maiores nobis non sed velit repellat?
-                    </InfoStyle>
-                  </DivStyle>
-                  <DivFlexStyle>
-                    <Autocomplete
+              {listCarShop.map((data: propsCard) => {
+                const { img, title, description, count, price, id } = data
+                return (
+                  <ListStyle key={id}>
+                    <DivImgStyle>
+                      <ImagenStyle src={img} />
+                    </DivImgStyle>
+                    <DivStyle>
+                      <TextCenter>{title}</TextCenter>
+                      <InfoStyle>{description}</InfoStyle>
+                    </DivStyle>
+                    <DivFlexStyle>
+                      {/* <Autocomplete
                       sx={{ width: 120 }}
                       options={amount}
+                      onLoad={(e) => console.log(e)}
                       renderInput={(params) => {
-                        setUnit(parseInt(params.inputProps.value))
                         return <TextField {...params} label='Unidades' />
                       }}
-                    ></Autocomplete>
-                  </DivFlexStyle>
-                  <DivStylePrice>
-                    <TextEnd>
-                      <SpanText>C/U:</SpanText> {nombre.price}$
-                    </TextEnd>
-                    <TextEnd>
-                      <SpanText>Total:</SpanText> {nombre.price * unit}$
-                    </TextEnd>
-                    <BtnDelete onClick={() => DeleteItemCar(nombre.id)}>
-                      <RemoveShoppingCartIcon />
-                    </BtnDelete>
-                  </DivStylePrice>
-                </ListStyle>
-              ))}
+                    ></Autocomplete> */}
+                      <input type='number' onChange={addUnit} value={unit} />
+                    </DivFlexStyle>
+                    <DivStylePrice>
+                      <TextEnd>
+                        <SpanText>C/U:</SpanText> {price}$
+                      </TextEnd>
+                      <TextEnd>
+                        <SpanText>Total:</SpanText> {price * unit}$
+                      </TextEnd>
+                      <BtnDelete onClick={() => DeleteItemCar(id)}>
+                        <RemoveShoppingCartIcon />
+                      </BtnDelete>
+                    </DivStylePrice>
+                  </ListStyle>
+                )
+              })}
             </ul>
           </Box>
           <Grid sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -121,7 +127,7 @@ const index = (props: listCarInfo) => {
           </Grid>
         </Box>
       </Modal>
-    </div>
+    </>
   )
 }
 

@@ -119,4 +119,20 @@ export const BtnAdd = styled.button`
   bottom: 0;
   border: none;
   color: #fff;
+  cursor: pointer;
+  &:hover {
+    background: #fff;
+    color: #4d4949cf;
+  }
+`
+export const BtnAdded = styled.button`
+  background: var(--success);
+  padding: 15px 20px;
+  border-radius: 50px 50px 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 `

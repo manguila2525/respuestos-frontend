@@ -6,22 +6,14 @@ interface AddItemCar {
   type: 'ADD'
   payload: {
     id: ''
-    title: 'Frenos'
-    price: 50
-    count: '1'
-    img: 'https://espirituracer.com/archivos/2017/11/portada-frenos.jpg'
+    title: ''
+    price: 0
+    count: ''
+    img: ''
   }
 }
 type ActionCar = AddItemCar | RemoveItemCar
-const initialState = [
-  {
-    id: '',
-    title: 'Frenos',
-    price: 50,
-    count: '1',
-    img: 'https://espirituracer.com/archivos/2017/11/portada-frenos.jpg',
-  },
-]
+const initialState = []
 const listCarReducer = (state = initialState, action: ActionCar) => {
   switch (action.type) {
     case 'ADD':

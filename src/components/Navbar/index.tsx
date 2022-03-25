@@ -58,7 +58,7 @@ const Navbar = () => {
           </h3>
         </li>
         <li>
-          <ShoppingCart listCar={listCar} />
+          <ShoppingCart />
         </li>
       </NavList>
     </NavStyled>

@@ -1,6 +1,7 @@
-import frenos from '../../img/frenos.jpg'
+import { useState } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import IosShareIcon from '@mui/icons-material/IosShare'
 import {
   CardStyled,
   CardBtn,
@@ -11,10 +12,10 @@ import {
   FooterStyled,
   ImgStyled,
   BtnAdd,
+  BtnAdded,
 } from './styled'
 
 import { handleBtnLike } from './useCard'
-import { Button } from '@mui/material'
 import { useDispatch } from 'react-redux'
 
 interface propsCard {
@@ -24,13 +25,16 @@ interface propsCard {
   cantidad: number
   price: number
   imageUrl: string
+  description: string
 }
 
 const CardLogin = (props: propsCard) => {
-  const { id, title, price, imageUrl } = props
-  const infoCard = { id, title, count: 1, price, img: imageUrl }
+  const [itemAdd, setItemAdd] = useState(false)
+  const { id, title, price, imageUrl, description } = props
+  const infoCard = { id, title, count: 1, price, img: imageUrl, description }
   const dispatch = useDispatch()
   const addCar = () => {
+    setItemAdd(!itemAdd)
     dispatch({ type: 'ADD', payload: infoCard })
   }
 
@@ -42,9 +46,16 @@ const CardLogin = (props: propsCard) => {
       </LinkStyled>
       <FooterStyled>
         <CardTitle>{title}</CardTitle>
-        <BtnAdd onClick={addCar}>
-          <AddShoppingCartIcon />
-        </BtnAdd>
+
+        {itemAdd ? (
+          <BtnAdded disabled>
+            <IosShareIcon />
+          </BtnAdded>
+        ) : (
+          <BtnAdd onClick={addCar}>
+            <AddShoppingCartIcon />
+          </BtnAdd>
+        )}
       </FooterStyled>
     </ContentStyle>
   )
