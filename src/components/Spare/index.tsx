@@ -1,17 +1,17 @@
 import {
-  ContentSpare,
-  ImgSpare,
-  ListCommunication,
-  ContentList,
-  Descripcion,
-  BtnIcon,
-  ListStar,
-  ContentTools,
-  BtnCountLeft,
-  BtnCountRight,
-  // Title,
-  // TitleInfo,
-  ContentImg,
+	ContentSpare,
+	ImgSpare,
+	ListCommunication,
+	ContentList,
+	Descripcion,
+	BtnIcon,
+	ListStar,
+	ContentTools,
+	BtnCountLeft,
+	BtnCountRight,
+	// Title,
+	// TitleInfo,
+	ContentImg,
 } from './styled'
 
 // import CallIcon from '@mui/icons-material/Call'
@@ -24,56 +24,56 @@ import { Container, TitleBig, FlexJustify } from '../../theme'
 
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios from '../../axiosConfig'
 
 const Spare = () => {
-  const { id } = useParams()
-  const [data, setData] = useState({
-    title: '',
-    description: '',
-    imageUrl: '',
-  })
-  const getApiSpare = async () => {
-    const { data } = await axios.get(`http://localhost:8000/api/spare/${id}`)
-    setData(data.data)
-  }
-  useEffect(() => {
-    getApiSpare()
-  }, [])
-  return (
-    <>
-      <Container>
-        <FlexJustify>
-          <ContentSpare>
-            <div>
-              <TitleBig>
-                {data.title === '' ? 'Cargando' : data.title}
-                <ListStar>
-                  <StarIcon fontSize='large' style={{ color: '#4285f4' }} />
+	const { id } = useParams()
+	const [data, setData] = useState({
+		title: '',
+		description: '',
+		imageUrl: '',
+	})
+	const getApiSpare = async () => {
+		const { data } = await axios.get(`/spare/${id}`)
+		setData(data.data)
+	}
+	useEffect(() => {
+		getApiSpare()
+	}, [])
+	return (
+		<>
+			<Container>
+				<FlexJustify>
+					<ContentSpare>
+						<div>
+							<TitleBig>
+								{data.title === '' ? 'Cargando' : data.title}
+								<ListStar>
+									<StarIcon fontSize="large" style={{ color: '#4285f4' }} />
 
-                  <StarIcon fontSize='large' style={{ color: '#25d366' }} />
+									<StarIcon fontSize="large" style={{ color: '#25d366' }} />
 
-                  <StarIcon fontSize='large' style={{ color: '#dd4b39' }} />
+									<StarIcon fontSize="large" style={{ color: '#dd4b39' }} />
 
-                  <StarIcon fontSize='large' style={{ color: '#c13584' }} />
+									<StarIcon fontSize="large" style={{ color: '#c13584' }} />
 
-                  <StarIcon fontSize='large' style={{ color: '#c13584' }} />
-                </ListStar>
-              </TitleBig>
-            </div>
-            <ContentImg>
-              {data.imageUrl === '' ? null : (
-                <ImgSpare src={data.imageUrl} alt={data.title} />
-              )}
-            </ContentImg>
+									<StarIcon fontSize="large" style={{ color: '#c13584' }} />
+								</ListStar>
+							</TitleBig>
+						</div>
+						<ContentImg>
+							{data.imageUrl === '' ? null : (
+								<ImgSpare src={data.imageUrl} alt={data.title} />
+							)}
+						</ContentImg>
 
-            <ContentList>
-              <Descripcion>{data.description}</Descripcion>
-            </ContentList>
-            <BtnCountLeft>-</BtnCountLeft>
-            <BtnCountRight>+</BtnCountRight>
-          </ContentSpare>
-          {/* <ContentTools>
+						<ContentList>
+							<Descripcion>{data.description}</Descripcion>
+						</ContentList>
+						<BtnCountLeft>-</BtnCountLeft>
+						<BtnCountRight>+</BtnCountRight>
+					</ContentSpare>
+					{/* <ContentTools>
             <Title>Cantidad</Title>
             <Title>1</Title>
             <FlexJustify>
@@ -103,10 +103,10 @@ const Spare = () => {
               </BtnIcon>
             </ListCommunication>
           </ContentTools> */}
-        </FlexJustify>
-      </Container>
-    </>
-  )
+				</FlexJustify>
+			</Container>
+		</>
+	)
 }
 
 export default Spare
